@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="http://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <script src="resources/header/header.js" defer></script>
+
+    <title>Clinic</title>
+  </head>
+  <body>
+    <!-- izgled elemenata uzimamo sa bootstrap site-a -->
+    <header class="header-navbar">
+      <div class="header-logo">
+        <img
+          src="https://seeklogo.com/images/H/hospital-clinic-plus-logo-7916383C7A-seeklogo.com.png"
+        />
+      </div>
+      <a href="#" id="header-toggle-button">
+        <span class="header-bar"></span>
+        <span class="header-bar"></span>
+        <span class="header-bar"></span>
+      </a>
+      <div id="header-navbar-links" class="inactive">
+        <ul>
+          <li><a href="#slideshow-container">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="./pages/login/login.html" id="login" class="header-button">Login</a></li>
+          <li><a href="./pages/register/register.html" id="register" class="header-button">Register</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section id="slideshow-container">
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          <div></div>
+          <img src="https://icr-global.org/media/1008/clinical.jpg">
+          <div></div>
+        </div>
+      
+        <div class="mySlides fade">
+          <div></div>
+          <img src="https://www.socra.org/blog/wp-content/uploads/2019/07/bannerNew1-1024x513.jpg">
+          <div></div>
+        </div>
+      
+        <div class="mySlides fade">
+          <div></div>
+          <img src="https://dragonconsultinggroups.com/wp-content/uploads/2017/03/Clinical-Trials.jpg">
+          <div></div>
+        </div>
+      
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+      
+      <!-- The dots/circles -->
+      <div class="div-span" style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container-services">
+        <h1>Our Services</h1>
+        <div class="row-services">
+          <div class="service">
+            <i class="fa-solid fa-laptop"></i>
+            <h2>Traumatic pathology</h2>
+            <p>Fractures, Dislocations, Tendinous ruptures
+            </p>
+          </div>
+          <div class="service">
+            <i class="fa-solid fa-laptop"></i>
+            <h2>Static pathology</h2>
+            <p>Imbalances, Misalignments, Chondromalacia</p>
+          </div>
+          <div class="service">
+            <i class="fa-solid fa-laptop"></i>
+            <h2>Osteotomy of the femur and tibia</h2>
+            <p>The realignment of the axis of the leg</p>
+          </div>
+          <div class="service">
+            <i class="fa-solid fa-laptop"></i>
+            <h2>Complex ligamentous injuries</h2>
+            <p>is the intraarticular application of hyaluronic acid (HA) is considered a therapeutic alternative in the non-surgical management of osteoarthritis </p>
+          </div>
+          <!-- <div class="service">
+            <i class="fa-solid fa-laptop"></i>
+            <h2>Service 5</h2>
+            <p>Treatment of shoulder instability and rotator cuff pathology
+            </p>
+          </div>
+          <div class="service">
+            <i class="fa-solid fa-laptop"></i>
+            <h2>Service 6</h2>
+            <p>Tendinopathy in athletes and muscle injuries
+            </p>
+          </div>
+          <div class="service">
+            <i class="fa-solid fa-laptop"></i>
+            <h2>Service 7</h2>
+            <p>Primary knee prostheses
+            </p>
+          </div>
+          <div class="service">
+            <i class="fa-solid fa-laptop"></i>
+            <h2>Service 8</h2>
+            <p>Primary hip prostheses
+            </p>
+          </div> -->
+
+          
+        </div>
+
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="testimonials">
+        <div class="testimonial-inner">
+          <h1>Recensions</h1>
+          <div class="border"></div>
+          
+          <div class="row">
+            <div class="col">
+              <div class="testimonial">
+                <img src="https://images.pexels.com/photos/3211476/pexels-photo-3211476.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                <div class="name">Michael Oxford</div>
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <p>Everything was clean and very hygienic!</p>
+              </div>
+            </div>
+            
+            <div class="col">
+              <div class="testimonial">
+                <img src="https://images.pexels.com/photos/3585325/pexels-photo-3585325.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                <div class="name">John Doe</div>
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <p>My time at the clinic was great and pleasent</p>
+              </div>
+            </div>
+            
+            <div class="col">
+              <div class="testimonial">
+                <img src="https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                <div class="name">Camil Plojovic</div>
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <p>Staff has great energy!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-col">
+        <h4>Clinic</h4>
+        <ul>
+          <li><a href="#">About us/a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Our team</a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">shipping</a></li>
+          <li><a href="#">returns</a></li>
+          <li><a href="#">payment options</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#">Traumatic pathology</a></li>
+          <li><a href="#">Static pathology</a></li>
+          <li><a href="#">Osteotomy of the femur and tibia</a></li>
+          <li><a href="#">Complex ligamentous injuries</a></li>
+          <li><a href="#">Treatment of shoulder instability and rotator cuff pathology</a></li>
+          <li><a href="#">Tendinopathy in athletes and muscle injuries</a></li>
+          <li><a href="#">Primary knee prostheses</a></li>
+          <li><a href="#">Primary hip prostheses</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+
+        <div class="footer-social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer-contact-us">
+          <span>Telefon : +3816666666</span>
+          <br />
+          <span>Email : cplojovic@gmail.com</span>
+        </div>
+      </div>
+    </footer>
+    <script src="resources/gallery/index.js"></script>
+  </body>
+</html>

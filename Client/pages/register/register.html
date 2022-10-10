@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Validacija Forme</title>
+	<link rel="stylesheet" type="text/css" href="register.css">
+	<link rel="stylesheet" type="text/css" href="../../style.css">
+	<!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+	
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body class="register-body">
+
+	<div class="form-container">
+		<center>
+			<h1 class="title-register">Register</h1>
+		</center>
+		<div class="header-logo"><a href="../../index.html"><img src="	https://seeklogo.com/images/H/hospital-clinic-plus-logo-7916383C7A-seeklogo.com.png" alt=""></a></div><br>
+
+		<form id="registerForm">
+			<h1>Register user</h1>
+			<label for="name">Name:</label>
+			<input value="Dzelal" id="name" type="text" name="name" placeholder="Example: Mark ">
+
+			<label for="surname">Surname:</label>
+			<input value="Dupljak" id="surname" type="text" name="surname" placeholder="Example: Zuckkew">
+			<label  for="jmbg">jmbg:</label>
+			<input value="398372838" id="jmbg" type="text" name="jmbg" placeholder="jmbg: 98797835464564">
+			<label for="birthDate">Birth day:</label>
+			<input value="1999-07-24" id="birthDate" type="text" name="birthDate" placeholder="Example: 1999-07-24">
+
+			<label for="email">Email:</label>
+			<input value="dzelal_d@live.com" id="email" type="text" name="email" placeholder="markzuc@example.eu">
+
+			<label for="password">Password:</label>
+			<input value="1235315" id="password" type="password" name="password" placeholder="*******">
+
+			<!-- <label for="repeat_password">Repeat password:</label>
+			<input id="repeat_password" type="password" name="repeat_password" placeholder="*******"> -->
+
+			<label for="birthPlace">Chose country:</label>t
+			<input value="Serbia" list="birthPlace" name="birthPlace" class="datalist-input" />
+			<datalist id="birthPlace">
+				<option value="Srbija" />
+				<option value="Hrvatska" />
+				<option value="Crna Gora" />
+				<option value="Bosna i Hercegovina" />
+				<option value="Albanija" />
+			</datalist>
+
+			<label for="phoneNumber">Number phone:</label>
+			<input value="06632432" id="phoneNumber" type="text" name="phoneNumber" placeholder="+38#####">
+
+			<label for="country">Chose gander:</label>
+			<input value="Male" list="gender" name="gender" class="datalist-input" />
+			<datalist id="gender">
+				<option value="Male" />
+				<option value="Female" />
+			</datalist>
+
+			<input type="submit" value="Stash the file"></button>
+			<a href="../login/login.html"> Already have an account? </a>
+		</form>
+	</div>
+
+
+	<script src="register.js"></script>
+</body>
+
+</html>

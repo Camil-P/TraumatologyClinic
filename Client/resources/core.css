@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,600&display=swap");
+@import url("footer.css");
+@import url("header.css");
+@import url("services.css");
+
+input[type="text"],
+select,
+input[list="country"],
+input[type="number"],
+input[list="sex"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label{
+  color: white;
+}
+
+a{
+  color: #4caf50;
+}
+
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[list="countrt"]:hover{
+  background-color: #45a049;
+}
+
+
+button a {
+  text-decoration: none;
+}
+
+
+.form-container {
+  width: 500px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 5px;
+  background-color: #24262b;
+  padding: 20px;
+}
+
+section {
+  border-color: greenyellow;
+    border-width: 1px 0px 1px 0px;
+    border-style: solid ;
+    border-collapse: collapse;
+}
+/* button { 
+    background-color: #4CAF50; 
+    width: 100%;
+    color: orange; 
+    padding: 15px; 
+    margin: 10px 0px; 
+    border: none; 
+    cursor: pointer; 
+    font-size: large;
+} 
+
+button:hover { 
+    opacity: 0.7; 
+} 
+
+input[type=text] input[type=password] { 
+    width: 100%; 
+    margin: 8px 0;
+    padding: 12px 20px; 
+    display: inline-block; 
+    border: 2px solid green; 
+    box-sizing: border-box; 
+} */
+
+.error {
+  display: flex;
+  color: red;
+}

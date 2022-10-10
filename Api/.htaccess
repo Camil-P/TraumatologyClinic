@@ -1,0 +1,14 @@
+php_flag display_errors on
+SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+#CORS options
+Header Set Access-Control-Allow-Origin *
+Header Set Access-Control-Allow-Headers *
+Header Set Access-Control-Allow-Methods *
+
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+
+# RewriteRule ^appointments controller/AppointmentController.php
+# RewriteRule ^appointments/([0-9]+)$ controllers/AppointmentController.php?appointmentId=$1 [L]

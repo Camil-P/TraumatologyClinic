@@ -1,0 +1,39 @@
+/* 
+
+form{ 
+    border: 3px solid #f1f1f1; 
+} 
+
+
+.container { 
+    padding: 25px; 
+    background-color: lightblue;
+    position: relative;
+    margin: 25px;
+} 
+
+#login {
+    width: 500px; 
+    height: 500px; 
+    margin: auto;
+} */
+
+.body-login {
+    background-color: rgb(29, 31, 31);
+}
+
+.title-login {
+    text-decoration: underline greenyellow;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 300;
+    color: #bbbbbb;
+}
+
+h1{
+	font-size: 18px;
+    color: #ffffff;
+    font-weight: 500;
+}

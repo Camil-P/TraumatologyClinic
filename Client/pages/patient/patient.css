@@ -1,0 +1,162 @@
+.patient-container {
+  width: 100%;
+  /* height: 1500px; */
+  background-color: #24262b;
+}
+
+.doctors-card {
+  display: flex;
+  width: 80%;
+  height: 400px;
+  margin: auto;
+}
+
+.doctors-image {
+  width: 30%;
+  height: 100%;
+}
+
+.doctors-info {
+  width: 40%;
+  height: 100%;
+}
+.image-doctors {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.img-doctor {
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+}
+.doctors-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.doctors-info-container h2 {
+  margin: 6px;
+  font-weight: 100;
+  color: white;
+  text-decoration: underline greenyellow;
+}
+.doctors-select {
+  width: 20%;
+  height: 100%;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-doctor {
+  
+  font-size: 18px;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(7, 171, 116);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.btn-doctor-false {
+  font-size: 18px;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(171, 7, 21);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+#profile-btn {
+  background-color: green;
+}
+
+.modal-profile {
+  position: fixed;
+  width: 70%;
+  height: 600px;
+  border: 1px solid gainsboro;
+  left: 330px;
+  top: 200px;
+  background-color: #24262b;
+  display: none;
+}
+
+.container-info {
+  width: 100%;
+  height: 90%;
+}
+
+#close-modal {
+  height: 10%;
+  width: 100%;
+  font-size: 30px;
+  transition: 0.4s ease-in-out all;
+  cursor: pointer;
+}
+#close-modal:hover {
+  background-color: #bb0707;
+  color: white;
+}
+
+.container-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-info {
+  width: 40%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-info img {
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
+}
+.text-info {
+  width: 60%;
+  height: 60%;
+}
+.text-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-info h2 {
+  margin-left: 20px;
+  font-weight: 100;
+  color: white;
+}
+
+
+#doctors-container {
+  background-color: #24262b;
+}
+
+#appointments {
+  background-color: #24262b;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.appointment-container{
+  margin-left: 200px;
+  width: 400px;
+}

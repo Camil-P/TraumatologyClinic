@@ -1,0 +1,20 @@
+.register-body {
+	background-color: rgb(29, 31, 31);
+	
+}
+
+.title-register {
+	text-decoration: underline greenyellow;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 300;
+    color: #bbbbbb;
+}
+
+h1{
+	font-size: 18px;
+    color: #ffffff;
+    font-weight: 500;
+}

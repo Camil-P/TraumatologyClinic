@@ -1,0 +1,3 @@
+onRequestForDoctor = () => {
+	console.log("povezano");
+};

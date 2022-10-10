@@ -1,0 +1,14 @@
+@import url("resources/core.css");
+@import url("resources/footer.css");
+@import url("resources/gallery/gallery.css");
+@import url("resources/header/header.css");
+@import url("resources/testimonial/testimonial.css");
+
+
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+

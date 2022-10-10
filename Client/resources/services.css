@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,600&display=swap");
+ 
+.container-services {
+    line-height: 1.5;
+    font-family: "Poppins", sans-serif;
+}
+
+.container-services {
+    width: 100%;
+    height: 100vh;
+    background-color: #24262b;
+    /* padding: 0 8%; */
+}
+
+.container-services h1 {
+    color: #ffffff;
+    margin: 0px;
+    text-align: center;
+    padding-top: 10%;
+    margin-bottom: 60px;
+    font-weight: 600;
+    position: relative;
+}
+.container-services h2 {
+    font-size: 18px;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container-services h1::after {
+    content: '';
+    background: greenyellow;
+    width: 100px;
+    height: 5px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.row-services {
+    padding: 20px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: 20px;
+    justify-content: center;
+    /* flex-direction: column; */
+    
+}
+
+.service {
+    text-align: center;
+    padding: 25px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    background: transparent;
+    transition: transform 0.5s,backround 0.5s;
+
+}
+
+
+
+.service i {
+    font-size:40px ;
+    margin-bottom: 10px;
+    color: green;
+}
+
+.service h2 {
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-decoration: underline greenyellow;
+}
+
+.service p {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+.service {
+    transition: 1s all ease;
+}
+.service:hover {
+    
+    background: greenyellow;
+    color: black;
+    transform: scale(1.05);
+}
+
+.service:hover i {
+    /* color: #fff; */
+}
+
+@media (max-width: 1071px) {
+    .container-services {
+      height: 130vh;
+      display: wrap;
+    }
+  }
+
+  @media (max-width: 1071px) {
+    .row-services {
+      
+     flex-wrap: wrap;
+    }
+  }
