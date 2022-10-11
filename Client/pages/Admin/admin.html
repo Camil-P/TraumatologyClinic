@@ -39,7 +39,8 @@
     <section class="container-register-doctor">
     <div class="form-doctor">
       <div class="form-doctor-register">
-        <form id="registerFromAdmin">
+        <form autocomplete="off" id="registerFromAdmin">
+          <input autocomplete="false" name="hidden" type="text" style="display:none;">
           <div class="register-container">
 
          
@@ -66,32 +67,32 @@
           <label for="birthPlace">Chose country:</label>
           <input type="text" list="birthPlace" name="birthPlace" />
           <datalist id="birthPlace">
-            <option value="Srbija" />
-            <option value="Hrvatska" />
-            <option value="Crna Gora" />
-            <option value="Bosna i Hercegovina" />
-            <option value="Albanija" />
+            <option value="Srbija" ></option>
+            <option value="Hrvatska" ></option>
+            <option value="Crna Gora" ></option>
+            <option value="Bosna i Hercegovina" ></option>
+            <option value="Albanija" ></option>
           </datalist>
           <label for="phoneNumber">Number phone:</label>
-          <input  id="phoneNumber" type="text" name="phoneNumber" placeholder="+38#####">
+          <input  id="phoneNumber" type="text" name="phoneNumber" placeholder="06#####">
     
           <label for="country">Choose gender:</label>
           <input type="text"  list="gender" name="gender" />
           <datalist id="gender">
-            <option value="Male" />
-            <option value="Female" />
+            <option value="Male" ></option>
+            <option value="Female" ></option>
           </datalist>
 
           <label for="role">Chose role:</label>
           <input  type="text" list="role" name="role"  />
           <datalist id="role">
-            <option value="Admin" />
-            <option value="Doctor" />
-            <option value="Patient" />
+            <option value="Admin" ></option>
+            <option value="Doctor" ></option>
+            <option value="Patient" ></option>
 
           </datalist>
     
-          <input type="submit" value="Stash the file"></button>
+          <input type="submit" value="Submit"></button>
         </div>
         </form>
 

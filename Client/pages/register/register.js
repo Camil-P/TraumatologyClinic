@@ -102,10 +102,9 @@ form.addEventListener(
         alert("You have successfully created an account");
         window.location.href = "http://127.0.0.1:5500/Client/index.html";
       })
-      .catch((err) => {
-        const messageErr = err.response.data.messages
-        
-        alert(`Creating not successfully:  ${messageErr}`);
+      .catch(({ response }) => {   
+        console.log(response.data.messages[0]);
+        alert(response.data.messages[0]);
       });
   },
   false

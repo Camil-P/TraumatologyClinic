@@ -52,7 +52,6 @@ function createDynamicPatientTable(patientList) {
   console.log(patientList, "Dwadwa");
 
   patientList.forEach((patient) => {
-    console.log(patient);
     let tr = document.createElement("tr");
     tablePatientHeaders.append(tr);
 
@@ -171,7 +170,8 @@ form.addEventListener(
         modalProfile.style.display = "none";
       })
       .catch(({ response }) => {
-        console.log(response);
+        console.log(response.data.messages[0]);
+        alert(response.data.messages[0]);
         // console.log(response.data);
         // alert(response.data.messages[0]);
         // const messageErr = err.response.data.messages
@@ -184,7 +184,6 @@ form.addEventListener(
 );
 
 const fetchDoctors = () => {
-  console.log(token);
   axios
     .get(
       "http://localhost/Clinic/Api/controllers/AdminController.php?fetch=doctors",
@@ -210,7 +209,6 @@ const fetchDoctors = () => {
 fetchDoctors();
 
 const fetchPatients = () => {
-  console.log(token, "tu sma i ja");
   axios
     .get(
       "http://localhost/Clinic/Api/controllers/AdminController.php?fetch=patients",
@@ -221,13 +219,11 @@ const fetchPatients = () => {
       }
     )
     .then((res) => {
-      console.log("patientRes: " + res);
       const patientList = res.data.data;
-      console.log(patientList, "tuuu");
       createDynamicPatientTable(patientList);
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(({ data }) => {
+      console.log(data.messages[0]);
       // alert(err);
       // throw err;
     });

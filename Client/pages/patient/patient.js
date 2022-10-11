@@ -28,7 +28,7 @@ const fetchDoctors = () => {
     });
 };
 
-
+fetchDoctors();
 
 function createDoctorsList(listDoctors) {
   const doctorContainer = document.getElementById("doctors-container");
@@ -64,8 +64,6 @@ function createDoctorsList(listDoctors) {
     </div>`;
   });
 }
-
-fetchDoctors();
 
 const fetchAppointments = () => {
   axios

@@ -39,9 +39,9 @@ form.addEventListener(
             "http://127.0.0.1:5500/Client/pages/Doctor/doctor.html";
         }
       })
-      .catch((err) => {
-        console.log(err);
-        alert("Login failed");
+      .catch(({ response }) => {
+        console.log(response.data.messages[0]);
+        alert(response.data.messages[0]);
       });
   },
   false

@@ -28,7 +28,7 @@ try {
 
 $authorizedUser = authorize($writeDB);
 
-if ($authorizedUser['role'] !== "Admin" || $authorizedUser['role'] !== "Doctor" ) {
+if ($authorizedUser['role'] !== "Admin") {
     $response = new Response(false, 401);
     $response->addMessage("You are not authorized");
     $response->send();
