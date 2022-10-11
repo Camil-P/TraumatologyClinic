@@ -9,6 +9,7 @@
   width: 80%;
   height: 400px;
   margin: auto;
+  border-bottom: 1px solid greenyellow;
 }
 
 .doctors-image {
@@ -30,13 +31,13 @@
 
 .img-doctor {
   width: 80%;
-  height: 80%;
+  height: 55%;
   border-radius: 10px;
 }
 .doctors-info-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   width: 100%;
   height: 100%;
@@ -50,7 +51,9 @@
 }
 .doctors-select {
   width: 20%;
-  height: 100%;
+  /* height: 100%; */
+  margin-top: 20px;
+  border-left: 1px solid greenyellow;
 }
 
 .button-container {
@@ -59,12 +62,13 @@
   margin-top: 50px;
   width: 100%;
   height: 100%;
+  align-items: center;
 }
 
 .btn-doctor {
   
-  font-size: 18px;
-  width: 100%;
+  font-size: 16px;
+  width: 80%;
   height: 40px;
   background-color: rgb(7, 171, 116);
   border-radius: 5px;
@@ -72,11 +76,12 @@
 }
 
 .btn-doctor-false {
-  font-size: 18px;
-  width: 100%;
+  font-size: 16px;
+  width: 80%;
   height: 40px;
   background-color: rgb(171, 7, 21);
   border-radius: 5px;
+  color: white;
   margin-top: 5px;
 }
 
@@ -153,10 +158,30 @@
 #appointments {
   background-color: #24262b;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .appointment-container{
   margin-left: 200px;
   width: 400px;
+}
+
+
+#upcomingAppointments {
+  margin-top: 70px;
+ width: 300px;
+ height: 400px;
+ overflow-y: scroll;
+}
+
+#upcomingAppointments button {
+  width: 80%;
+  background-color: rgb(198, 52, 52);
+  color: white;
+}
+
+#upcomingAppointments h1 {
+  font-weight: 100;
+  color: white;
+  font-size: 15px;
 }

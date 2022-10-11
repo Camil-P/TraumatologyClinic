@@ -10,6 +10,7 @@ header('Access-Control-Allow-Methods: *');
 include_once('../config/Database.php');
 include_once('../models/Response.php');
 include_once('../models/Doctor.php');
+include_once('../models/User.php');
 include_once('../requestModels/CreateUser.php');
 require_once("../config/Auth.php");
 
@@ -27,7 +28,7 @@ try {
 
 $authorizedUser = authorize($writeDB);
 
-if ($authorizedUser['role'] !== "Admin") {
+if ($authorizedUser['role'] !== "Admin" || $authorizedUser['role'] !== "Doctor" ) {
     $response = new Response(false, 401);
     $response->addMessage("You are not authorized");
     $response->send();
@@ -167,7 +168,45 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                     $response = new Response(true, 200);
                     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                        $doctor = new Doctor($row['Name'], $row["Surname"], $row['Gender'], $row['BirthPlace'], $row['PhoneNumber'], $row['Email'], false);
+                        $doctor = new Doctor($row['Id'], $row['Name'], $row["Surname"], $row['Gender'], $row['BirthPlace'], $row['PhoneNumber'], $row['Email'], false);
+                        $doctorArray[] = $doctor->asArray();
+                    }
+
+                    $response->setData($doctorArray);
+                    $response->send();
+                    exit();
+                } catch (DoctorException $ex) {
+                    $response = new Response(false, 400);
+                    $response->addMessage($ex->getMessage());
+                    $response->send();
+                    exit();
+                } catch (PDOException $ex) {
+                    $response = new Response(false, 500);
+                    $response->addMessage("There was a problem with fetch doctors from DB: \n" . $ex->getMessage());
+                    $response->send();
+
+                    error_log("DB error: " . $ex->getMessage(), 0);
+                    exit();
+                }
+            } else if ($fetch === "requests") {
+                try {
+
+                    $query = $writeDB->prepare("SELECT *
+                                                FROM assigndoctorrequest");
+                    $query->execute();
+
+                    $rowCount = $query->rowCount();
+                    if ($rowCount === 0) {
+                        $response = new Response(false, 404);
+                        $response->addMessage("No doctors were found.");
+                        $response->send();
+                        exit();
+                    }
+
+
+                    $response = new Response(true, 200);
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                        $doctor = new Doctor($row['Id'], $row['Name'], $row["Surname"], $row['Gender'], $row['BirthPlace'], $row['PhoneNumber'], $row['Email'], false);
                         $doctorArray[] = $doctor->asArray();
                     }
 
@@ -188,6 +227,163 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     error_log("DB error: " . $ex->getMessage(), 0);
                     exit();
                 }
+            } else if ($fetch === 'patients') {
+                $query = $writeDB->prepare("SELECT *
+                                            FROM user
+                                            WHERE Role = 'Patient'");
+                $query->execute();
+
+                $rowCount = $query->rowCount();
+                if ($rowCount === 0) {
+                    $response = new Response(false, 404);
+                    $response->addMessage("No patients were found.");
+                    $response->send();
+                    exit();
+                }
+
+
+                $response = new Response(true, 200);
+                while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                    $patient = new User(
+                        $row['Id'],
+                        $row['Name'],
+                        $row['Surname'],
+                        $row['Gender'],
+                        $row['BirthPlace'],
+                        $row['BirthDate'],
+                        $row['JMBG'],
+                        $row['PhoneNumber'],
+                        $row['Email'],
+                        $row['Role'],
+                        $row['Password'],
+                        $row['Disabled'],
+                        $row['LoginAttempts']
+                    );
+                    $patientAsArray = $patient->asArray();
+
+                    $requestQuery = $writeDB->prepare("SELECT *
+                                                FROM assigndoctorrequest
+                                                WHERE PatientId = {$patientAsArray['id']}");
+                    $requestQuery->execute();
+
+                    $rowCount = $query->rowCount();
+                    if ($rowCount === 0) {
+                        $patientAsArray['requests'] = array();
+                    }
+
+                    while ($requestRow = $requestQuery->fetch(PDO::FETCH_ASSOC)) {
+                        $patientAsArray['requests'] = $requestRow;
+                    }
+
+                    $patientsArray[] = $patientAsArray;
+                }
+
+                // $response->toCache(true);
+                $response->setData($patientsArray);
+                $response->send();
+                exit();
+            }
+        }
+        break;
+
+    case 'PATCH':
+        if (array_key_exists('requestId', $_GET)) {
+            $requestId = $_GET['requestId'];
+            try {
+
+                $query = $writeDB->prepare("SELECT *
+                                            FROM assigndoctorrequest
+                                            WHERE Id = $requestId");
+                $query->execute();
+
+                $rowCount = $query->rowCount();
+                if ($rowCount === 0) {
+                    $response = new Response(false, 404);
+                    $response->addMessage("No change doctor request was found.");
+                    $response->send();
+                    exit();
+                }
+
+                $row = $query->fetch(PDO::FETCH_ASSOC);
+
+                $query = $writeDB->prepare("UPDATE patient
+                                            SET DoctorId = {$row['RequestDoctorId']}
+                                            WHERE UserId = {$row['PatientId']};");
+                $query->execute();
+
+                $rowCount = $query->rowCount();
+                if ($rowCount === 0) {
+                    $response = new Response(false, 400);
+                    $response->addMessage("Change doctor request was not successfull.");
+                    $response->send();
+                    exit();
+                }
+
+                $query = $writeDB->prepare("DELETE FROM assigndoctorrequest 
+                                            WHERE Id = $requestId;");
+                $query->execute();
+
+                $rowCount = $query->rowCount();
+                if ($rowCount === 0) {
+                    $response = new Response(false, 400);
+                    $response->addMessage("Request deletion was not successfull.");
+                    $response->send();
+                    exit();
+                }
+
+                $response = new Response(true, 200);
+                $response->addMessage("Successfully approved doctor change request.");
+                $response->send();
+                exit();
+            } catch (DoctorException $ex) {
+                $response = new Response(false, 400);
+                $response->addMessage($ex->getMessage());
+                $response->send();
+                exit();
+            } catch (PDOException $ex) {
+                $response = new Response(false, 500);
+                $response->addMessage("There was a problem with approving request from DB: \n" . $ex->getMessage());
+                $response->send();
+
+                error_log("DB error: " . $ex->getMessage(), 0);
+                exit();
+            }
+        }
+        break;
+
+    case 'DELETE':
+        if (array_key_exists('requestId', $_GET)) {
+            $requestId = $_GET['requestId'];
+            try {
+
+                $query = $writeDB->prepare("DELETE FROM assigndoctorrequest
+                                            WHERE Id = $requestId;");
+                $query->execute();
+
+                $rowCount = $query->rowCount();
+                if ($rowCount === 0) {
+                    $response = new Response(false, 404);
+                    $response->addMessage("Unsuccessfully canceled the doctor change request.");
+                    $response->send();
+                    exit();
+                }
+                
+                $response = new Response(true, 200);
+                $response->addMessage("Successfully canceled doctor change request.");
+                $response->send();
+                exit();
+            } catch (DoctorException $ex) {
+                $response = new Response(false, 400);
+                $response->addMessage($ex->getMessage());
+                $response->send();
+                exit();
+            } catch (PDOException $ex) {
+                $response = new Response(false, 500);
+                $response->addMessage("There was a problem with approving request from DB: \n" . $ex->getMessage());
+                $response->send();
+
+                error_log("DB error: " . $ex->getMessage(), 0);
+                exit();
             }
         }
         break;
@@ -197,10 +393,3 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $response->send();
         exit();
 }
-
-
-
-// $response = new Response(false, 405);
-// $response->addMessage("Method not allowed.");
-// $response->send();
-// exit();

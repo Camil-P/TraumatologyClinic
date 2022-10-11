@@ -1,3 +1,25 @@
+const token = getCookie('accessToken');
+
+const DoctorcancelAppointment = (id) => {
+	axios.delete(
+	  "http://localhost/Clinic/Api/controllers/AppointmentController.php?appointmentId="+id,
+	  {
+		headers: {
+		  Authorization: token,
+		},
+	  }
+	)
+	.then((res) => {
+	  alert("Appointment deleted successfully.");
+	  window.location.reload();
+	})
+	.catch((err) => {
+	  console.log(err)
+	  alert(err);
+	});
+  }
+
+
 const myFunction = () => {
 	document.getElementById("myDropdown").classList.toggle("show");
 };
@@ -33,61 +55,40 @@ const showSelectedContent = (activeContent) => {
 		}
 	}
 };
-const mockedData = [
-	{
-		name: "Nikola",
-		surname: "Glisovic",
-		email: "dzoniblejz2@gmail.com",
-		phoneNumber: 0666406404,
-	},
-	{
-		name: "Nikola",
-		surname: "Glisovic",
-		email: "dzoniblejz2@gmail.com",
-		phoneNumber: 0666406404,
-	},
-	{
-		name: "Nikola",
-		surname: "Glisovic",
-		email: "dzoniblejz2@gmail.com",
-		phoneNumber: 0666406404,
-	},
-	{
-		name: "Nikola",
-		surname: "Glisovic",
-		email: "dzoniblejz2@gmail.com",
-		phoneNumber: 0666406404,
-	},
-];
-const mockedAppointedUser = [
-	{
-		patient: "Demir Erovic",
-		status: "Consultation",
-		appointmentDate: "10-10-2022",
-		doctor: "Sabir Sagdati",
-		actions: { 1: "Further analysis", 2: "Send message" },
-	},
-	{
-		patient: "Demir Erovic",
-		status: "Consultation",
-		appointmentDate: "10-10-2022",
-		doctor: "Sabir Sagdati",
-		actions: { 1: "Further analysis", 2: "Send message" },
-	},
-	{
-		patient: "Demir Erovic",
-		status: "Consultation",
-		appointmentDate: "10-10-2022",
-		doctor: "Sabir Sagdati",
-		actions: { 1: "Further analysis", 2: "Send message" },
-	},
-];
+
+
+
+const getAppointments = async () => {
+	console.log(token)
+	res = await axios
+	  .get(
+		"http://localhost/Clinic/Api/controllers/AppointmentController.php",
+		{
+		  headers: {
+			Authorization: token,
+		  },
+		}
+	  )
+	  .then((res) => {
+		console.log(res);
+		const appointmentsRes = res.data.data;
+		createAppointmentTable(appointmentsRes)
+	  })
+	  .catch((err) => {
+		console.log(err);
+		
+	  });
+  };
+
+
+ getAppointments();
+
 
 const table = document.getElementById("table-patients");
-function createTableData() {
-	mockedData.forEach((e) => {
+function createTableDataPatients(appArr) {
+	appArr.forEach((e) => {
 		table.innerHTML += `<tbody><tr>
-		<td>${e.name}</td>
+		<td></td>
 		<td>${e.surname}</td>
 		<td>${e.email}</td>
 		<td>${e.phoneNumber}</td>
@@ -95,7 +96,7 @@ function createTableData() {
 	</tbody>`;
 	});
 }
-createTableData();
+
 
 const btnLogout = document.getElementById("logout-doctor");
 btnLogout.addEventListener("click", () => {
@@ -105,17 +106,64 @@ btnLogout.addEventListener("click", () => {
 });
 
 const appointmentTable = document.getElementById("appointment-table");
-function createAppointmentTable() {
-	mockedAppointedUser.forEach((e) => {
+function createAppointmentTable(appointmentsRes) {
+
+	// data,serviceName,startingHour,completionStatus
+	
+	appointmentsRes.forEach((e) => {
 		appointmentTable.innerHTML += `<tbody>
 		<tr>
-			<td>${e.patient}</td>
-			<td>${e.status}</td>
-			<td>${e.appointmentDate}</td>
-			<td>${e.doctor}</td>
-			<td>${e.actions[1]}</td>
+			<td>${e.date}</td>
+			<td>${e.serviceName}</td>
+			<td>${e.startingHour}</td>
+			<td>${e.completionStatus}</td>
+			<td>${e.id}</td>
+			<td class="cancel-app" onclick="DoctorcancelAppointment(${e.id})">Cancel</td>
 		</tr>
 	</tbody>`;
 	});
 }
-createAppointmentTable();
+
+
+
+
+const fetchPatients = () => {
+	console.log(token, "tu sma i ja");
+	axios
+	  .get(
+		"http://localhost/Clinic/Api/controllers/DoctorController.php?fetch=patients",
+		{
+		  headers: {
+			Authorization: token,
+		  },
+		}
+	  )
+	  .then((res) => {
+		const patientList = res.data.data;
+		console.log(patientList,"tuu")
+		getPatient(patientList)
+	  })
+	  .catch((err) => {
+		console.log(err);
+		// alert(err);
+		// throw err;
+	  });
+  };
+  
+  fetchPatients();
+
+  const patient = document.getElementById('table-patients')
+  function getPatient(arr){
+	
+	arr.forEach((e) => {
+		
+		patient.innerHTML+=	`<tbody>
+		<tr>
+			<td>${e.name}</td>
+			<td>${e.surname}</td>
+			<td>${e.email}</td>
+			<td>${e.phoneNumber}</td>
+		</tr>
+	</tbody>`;
+	})
+  }

@@ -100,6 +100,10 @@
     /* color: #fff; */
 }
 
+.service{
+     width: 20%;
+}
+
 @media (max-width: 1071px) {
     .container-services {
       height: 130vh;

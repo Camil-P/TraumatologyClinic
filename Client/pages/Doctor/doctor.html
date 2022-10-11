@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../../resources/header/header.css">
     <link rel="stylesheet" href="../../pages/Doctor/doctor.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+   
 
 </head>
 
@@ -58,12 +61,14 @@
                     <table id="appointment-table">
                         <thead>
                             <tr>
-                                <th>Patient</th>
-                                <th>Status</th>
-                                <th>Appointment</th>
-                                <th>Doctor</th>
-                                <th>Actions</th>
+                                <th>Data</th>
+                                <th>Service Name</th>
+                                <th>Starting Hour-AM</th>
+                                <th>Completion Status</th>
+                                <th>Patient ID</th>
                             </tr>
+
+                            <!-- dynamic  table for Appointments$authorizedUser['role'] !== "Admin" -->
                         </thead>
                     </table>
                 </div>
@@ -103,48 +108,52 @@
 
     <footer class="footer">
         <div class="footer-col">
-            <h4>Kompanija</h4>
-            <ul>
-                <li><a href="#">o nama</a></li>
-                <li><a href="#">usluge</a></li>
-                <li><a href="#">nas tim</a></li>
-                <li><a href="#"></a></li>
-            </ul>
+          <h4>Clinic</h4>
+          <ul>
+            <li><a href="#">About us/a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Our team</a></li>
+            <li><a href="#"></a></li>
+          </ul>
         </div>
         <div class="footer-col">
-            <h4>Potrebna pomoc</h4>
-            <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">shipping</a></li>
-                <li><a href="#">returns</a></li>
-                <li><a href="#">payment options</a></li>
-            </ul>
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">shipping</a></li>
+            <li><a href="#">returns</a></li>
+            <li><a href="#">payment options</a></li>
+          </ul>
         </div>
         <div class="footer-col">
-            <h4>Nase usluge</h4>
-            <ul>
-                <li><a href="#">Isteravanje dzina</a></li>
-                <li><a href="#">Lijenje strave</a></li>
-                <li><a href="#">Lecenje frasova</a></li>
-                <li><a href="#">Otobljavanje od kockanja</a></li>
-            </ul>
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Traumatic pathology</a></li>
+            <li><a href="#">Static pathology</a></li>
+            <li><a href="#">Osteotomy of the femur and tibia</a></li>
+            <li><a href="#">Complex ligamentous injuries</a></li>
+            <li><a href="#">Treatment of shoulder instability and rotator cuff pathology</a></li>
+            <li><a href="#">Tendinopathy in athletes and muscle injuries</a></li>
+            <li><a href="#">Primary knee prostheses</a></li>
+            <li><a href="#">Primary hip prostheses</a></li>
+          </ul>
         </div>
         <div class="footer-col">
-            <h4>Kontaktirajte nas</h4>
-
-            <div class="footer-social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <div class="footer-contact-us">
-                <span>Telefon : +38166316189</span>
-                <br />
-                <span>Email : mahmutovic@plojovic.com</span>
-            </div>
+          <h4>Contact Us</h4>
+  
+          <div class="footer-social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <div class="footer-contact-us">
+            <span>Telefon : +3816666666</span>
+            <br />
+            <span>Email : cplojovic@gmail.com</span>
+          </div>
         </div>
-    </footer>
+      </footer>
     <script src="resources/gallery/index.js"></script>
 </body>
 <script src="../../utils.js"></script>

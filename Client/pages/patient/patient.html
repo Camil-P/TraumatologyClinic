@@ -47,12 +47,14 @@
               alt="patient"
             />
           </div>
-          <div class="text-info">
-            <h2>Name: Mark</h2>
-            <h2>Surname: Mark</h2>
-            <h2>Email: Mark</h2>
-            <h2>Age: Mark</h2>
-            <h2>Your Doctor: Mark</h2>
+          <div id="profileInfoData" class="text-info">
+            <h2 id="profileName">Name: </h2>
+            <h2 id="profileSurname">Surname: </h2>
+            <h2 id="profileEmail">Email: </h2>
+            <h2 id="profileBirthDate">Birth Date: </h2>
+            <h2 id="profileBirthPlace">Birth Place: </h2>
+            <h2 id="profilePhoneNumber">Phone Number: </h2>
+            <h2 id="profileGender">Gender: </h2>
           </div>
         </div>
         <button id="close-modal">Close</button>
@@ -60,6 +62,11 @@
     </section>
 
     <section id="appointments">
+
+      <div id="upcomingAppointments">
+        
+      </div>
+
       <div class="appointment-container">
 
         <form id="createAppointment" style="background-color: #24262b">
@@ -101,16 +108,7 @@
           /><br />
 
           <label for="startingHour">Starting Hour:</label><br />
-          <select name="startingHour" id="startingHour" required>
-            <!-- <option value="8">8</option>
-        <option value="9" disabled>9</option>
-        <option value="10">10</option>
-        <option value="11"  disabled>11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option> -->
-          </select>
+          <select name="startingHour" id="startingHour" required></select>
 
           <label for="note">Note:</label><br />
           <textarea
@@ -138,16 +136,16 @@
     <div class="patient-container">
       <footer class="footer">
         <div class="footer-col">
-          <h4>Kompanija</h4>
+          <h4>Clinic</h4>
           <ul>
-            <li><a href="#">o nama</a></li>
-            <li><a href="#">usluge</a></li>
-            <li><a href="#">nas tim</a></li>
+            <li><a href="#">About us/a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Our team</a></li>
             <li><a href="#"></a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Potrebna pomoc</h4>
+          <h4>Help</h4>
           <ul>
             <li><a href="#">FAQ</a></li>
             <li><a href="#">shipping</a></li>
@@ -156,17 +154,21 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Nase usluge</h4>
+          <h4>Our Services</h4>
           <ul>
-            <li><a href="#">Isteravanje dzina</a></li>
-            <li><a href="#">Lijenje strave</a></li>
-            <li><a href="#">Lecenje frasova</a></li>
-            <li><a href="#">Otobljavanje od kockanja</a></li>
+            <li><a href="#">Traumatic pathology</a></li>
+            <li><a href="#">Static pathology</a></li>
+            <li><a href="#">Osteotomy of the femur and tibia</a></li>
+            <li><a href="#">Complex ligamentous injuries</a></li>
+            <li><a href="#">Treatment of shoulder instability and rotator cuff pathology</a></li>
+            <li><a href="#">Tendinopathy in athletes and muscle injuries</a></li>
+            <li><a href="#">Primary knee prostheses</a></li>
+            <li><a href="#">Primary hip prostheses</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Kontaktirajte nas</h4>
-
+          <h4>Contact Us</h4>
+  
           <div class="footer-social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -174,9 +176,9 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
           <div class="footer-contact-us">
-            <span>Telefon : +38166316189</span>
+            <span>Telefon : +3816666666</span>
             <br />
-            <span>Email : mahmutovic@plojovic.com</span>
+            <span>Email : cplojovic@gmail.com</span>
           </div>
         </div>
       </footer>

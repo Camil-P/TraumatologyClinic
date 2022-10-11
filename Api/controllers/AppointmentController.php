@@ -89,7 +89,6 @@ if (!array_key_exists('appointmentId', $_GET) && $_SERVER['REQUEST_METHOD'] === 
         }
 
         $response = new Response(true, 200);
-        $response->toCache(true);
         $response->setData($appointmentArray);
         $response->send();
         exit();

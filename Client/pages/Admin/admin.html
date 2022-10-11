@@ -45,26 +45,26 @@
          
           <h1>Register user</h1>
           <label for="name">Name:</label>
-          <input value="Sefko" id="name" type="text" name="name" placeholder="Example: Mark ">
+          <input  id="name" type="text" name="name" placeholder="Example: Mark ">
     
           <label for="surname">Surname:</label>
-          <input value="Muratovic" id="surname" type="text" name="surname" placeholder="Example: Zuckkew">
+          <input id="surname" type="text" name="surname" placeholder="Example: Zuckkew">
           <label  for="jmbg">jmbg:</label>
-          <input value="1321321321" id="jmbg" type="text" name="jmbg" placeholder="jmbg: 98797835464564">
+          <input id="jmbg" type="text" name="jmbg" placeholder="jmbg: 98797835464564">
           <label for="birthDate">Birth day:</label>
-          <input value="1999-07-24" id="birthDate" type="text" name="birthDate" placeholder="Example: 1999-07-24">
+          <input  id="birthDate" type="text" name="birthDate" placeholder="Example: 1999-07-24">
     
           <label for="email">Email:</label>
-          <input value="sefkomuratovic@gmail.com" id="email" type="text" name="email" placeholder="markzuc@example.eu">
+          <input  id="email" type="text" name="email" placeholder="markzuc@example.eu">
     
           <label for="password">Password:</label>
-          <input value="123456" id="password" type="password" name="password" placeholder="*******">
+          <input  id="password" type="password" name="password" placeholder="*******">
     
           <!-- <label for="repeat_password">Repeat password:</label>
           <input id="repeat_password" type="password" name="repeat_password" placeholder="*******"> -->
     
           <label for="birthPlace">Chose country:</label>
-          <input type="text" value="Serbia" list="birthPlace" name="birthPlace" />
+          <input type="text" list="birthPlace" name="birthPlace" />
           <datalist id="birthPlace">
             <option value="Srbija" />
             <option value="Hrvatska" />
@@ -73,17 +73,17 @@
             <option value="Albanija" />
           </datalist>
           <label for="phoneNumber">Number phone:</label>
-          <input value="06632432" id="phoneNumber" type="text" name="phoneNumber" placeholder="+38#####">
+          <input  id="phoneNumber" type="text" name="phoneNumber" placeholder="+38#####">
     
-          <label for="country">Chose gander:</label>
-          <input type="text" value="Male" list="gender" name="gender" />
+          <label for="country">Choose gender:</label>
+          <input type="text"  list="gender" name="gender" />
           <datalist id="gender">
             <option value="Male" />
             <option value="Female" />
           </datalist>
 
           <label for="role">Chose role:</label>
-          <input value="Doctor" type="text" list="role" name="role"  />
+          <input  type="text" list="role" name="role"  />
           <datalist id="role">
             <option value="Admin" />
             <option value="Doctor" />
@@ -101,9 +101,10 @@
     </div>
 
     </section>
+    <h1 class="text-prev-table">List Doctors</h1>
     <section class="table-request">
       <div class="table-container">
-        <table class="table">
+        <table id="doctorsTable" class="table">
           <tr id="table-headers" class="table-headers">
             <th>Name</th>
             <th>Surname</th>
@@ -116,19 +117,40 @@
 
     </section>
 
+  </section>
+  <h1 class="text-prev-table">List Patients</h1>
+  <section class="table-request">
+    <div class="table-container">
+      <table id="patientsTable" class="table">
+        <tr id="table-patients" class="table-headers">
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Email</th>
+          <th>Phone number</th>
+          <!-- <th>Patient ID</th> -->
+          <th>Request change Doctor</th> 
+          <th>$authorizedUser['role'] !== "Admin"</th>
+          <!-- <th>RequestDoctorId</th> -->
+        </tr>
 
-    <footer id="footer-admin" class="footer">
+      </table>
+    </div>
+
+  </section>
+
+
+    <footer class="footer">
       <div class="footer-col">
-        <h4>Kompanija</h4>
+        <h4>Clinic</h4>
         <ul>
-          <li><a href="#">o nama</a></li>
-          <li><a href="#">usluge</a></li>
-          <li><a href="#">nas tim</a></li>
+          <li><a href="#">About us/a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Our team</a></li>
           <li><a href="#"></a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Potrebna pomoc</h4>
+        <h4>Help</h4>
         <ul>
           <li><a href="#">FAQ</a></li>
           <li><a href="#">shipping</a></li>
@@ -137,16 +159,20 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Nase usluge</h4>
+        <h4>Our Services</h4>
         <ul>
-          <li><a href="#">Isteravanje dzina</a></li>
-          <li><a href="#">Lijenje strave</a></li>
-          <li><a href="#">Lecenje frasova</a></li>
-          <li><a href="#">Otobljavanje od kockanja</a></li>
+          <li><a href="#">Traumatic pathology</a></li>
+          <li><a href="#">Static pathology</a></li>
+          <li><a href="#">Osteotomy of the femur and tibia</a></li>
+          <li><a href="#">Complex ligamentous injuries</a></li>
+          <li><a href="#">Treatment of shoulder instability and rotator cuff pathology</a></li>
+          <li><a href="#">Tendinopathy in athletes and muscle injuries</a></li>
+          <li><a href="#">Primary knee prostheses</a></li>
+          <li><a href="#">Primary hip prostheses</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Kontaktirajte nas</h4>
+        <h4>Contact Us</h4>
 
         <div class="footer-social-links">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -155,9 +181,9 @@
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <div class="footer-contact-us">
-          <span>Telefon : +38166316189</span>
+          <span>Telefon : +3816666666</span>
           <br />
-          <span>Email : mahmutovic@plojovic.com</span>
+          <span>Email : cplojovic@gmail.com</span>
         </div>
       </div>
     </footer>

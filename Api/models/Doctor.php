@@ -9,6 +9,7 @@ class DoctorException extends Exception
 
 class Doctor
 {
+  private $_id;
   private $_name;
   private $_surname;
   private $_gender;
@@ -17,8 +18,9 @@ class Doctor
   private $_email;
   private $_assigned;
 
-  public function __construct($name, $surname, $gender, $birthPlace, $phoneNumber, $email, $assigned)
+  public function __construct($id, $name, $surname, $gender, $birthPlace, $phoneNumber, $email, $assigned)
   {
+    $this->setId($id);
     $this->setName($name);
     $this->setSurname($surname);
     $this->setGender($gender);
@@ -31,6 +33,7 @@ class Doctor
   public function asArray()
   {
     $Doctor = array();
+    $Doctor['id'] = $this->getId();
     $Doctor['name'] = $this->getName();
     $Doctor['surname'] = $this->getSurname();
     $Doctor['gender'] = $this->getGender();
@@ -43,6 +46,10 @@ class Doctor
   }
 
   // SETTERS
+  public function setId($id)
+  {
+    $this->_id = $id;
+  }
 
   public function setName($name)
   {
@@ -143,5 +150,10 @@ class Doctor
   public function isAssigned()
   {
     return !!$this->_assigned;
+  }
+  
+  public function getId()
+  {
+    return $this->_id;
   }
 }

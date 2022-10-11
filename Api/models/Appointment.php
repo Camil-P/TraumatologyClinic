@@ -96,7 +96,7 @@ class Appointment
 
     public function setServiceName($serviceName)
     {
-        if (strlen($serviceName) < 0 || strlen($serviceName) > 25) {
+        if (strlen($serviceName) < 0 || strlen($serviceName) > 255) {
             throw new AppointmentException("Appointment - ServiceName is not valid.");
         }
 

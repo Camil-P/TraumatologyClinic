@@ -35,6 +35,10 @@ body {
   display: none;
 }
 
+.container-register-doctor h1{
+  margin: 0px;
+}
+
 .register-body {
   background-color: rgb(29, 31, 31);
 }
@@ -104,6 +108,29 @@ td {
   flex: 1;
 }
 
+.text-prev-table{
+  font-weight: 100;
+  color: rgb(249, 248, 246);
+  text-align: center;
+  font-size: 30px;
+  margin: 0;
+  background-color: #525652;
+}
 input[type='text'] {
   margin: 0;
+}
+
+.approve-btn{
+  width: 100%;
+  height: 50%;
+  background-color:green;
+  font-size: 20px;
+}
+
+.cancel-btn{
+  width: 100%;
+  height: 50%;
+  background-color:red;
+  font-size: 20px;
+  color: #ffffff;
 }

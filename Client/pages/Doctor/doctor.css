@@ -16,6 +16,7 @@ body {
 #table-patients,
 th,
 td {
+	text-align: center;
 	border: 1px solid black;
 	border-collapse: collapse;
 	background-color: lightgray;
@@ -183,4 +184,10 @@ td {
 .time-left {
 	float: left;
 	color: #999;
+  }
+
+
+  .cancel-app{
+	background-color: red;
+	cursor: pointer;
   }
