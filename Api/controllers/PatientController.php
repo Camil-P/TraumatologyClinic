@@ -1,8 +1,8 @@
 <?php
-header('Access-Control-Allow-Methods: *');
-header('Access-Control-Allow-Headers: *');
-header('Access-Control-Max-Age: 86400');
-header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Methods: *');
+// header('Access-Control-Allow-Headers: *');
+// header('Access-Control-Max-Age: 86400');
+// header('Access-Control-Allow-Origin: *');
 
 require_once("../config/Database.php");
 require_once("../models/Response.php");

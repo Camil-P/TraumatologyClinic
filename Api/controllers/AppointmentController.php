@@ -1,9 +1,9 @@
 <?php
 
-header('Access-Control-Allow-Methods: *');
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
+// header('Access-Control-Allow-Methods: *');
+// header('Access-Control-Allow-Headers: Content-Type, Authorization');
 // header('Access-Control-Max-Age: 86400');
-header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Origin: *');
 
 require_once("../config/Database.php");
 require_once("../models/Appointment.php");
@@ -59,17 +59,19 @@ if ($authorizedUser['role'] === 'Patient') {
 if (!array_key_exists('appointmentId', $_GET) && $_SERVER['REQUEST_METHOD'] === 'GET') {
     try {
         $query = $readDB->prepare('SELECT
-                                    Id,
-                                    ServiceName,
-                                    Date,
-                                    StartingHour,
-                                    PatientId,
-                                    DoctorId,
-                                    Note
-                                FROM appointment
+                                    a.*,
+                                    p.UserId,
+                                    u.Name as Name,
+                                    u.Surname as Surname
+                                FROM appointment a
+                                INNER JOIN patient p
+                                    ON a.PatientId = p.Id
+                                INNER JOIN user u
+                                    ON p.UserId = u.Id
                                 WHERE 
-                                    DoctorId = :doctorId
-                                    OR PatientId = :patientId;');
+                                    a.DoctorId = :doctorId
+                                    OR a.PatientId = :patientId
+                                ORDER BY Date DESC;');
 
         $query->bindParam(':doctorId', $doctorId, PDO::PARAM_INT);
         $query->bindParam(':patientId', $patientId, PDO::PARAM_INT);
@@ -85,7 +87,13 @@ if (!array_key_exists('appointmentId', $_GET) && $_SERVER['REQUEST_METHOD'] === 
 
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $appointment = new Appointment($row['Id'], $row["ServiceName"], $row['Date'], $row['StartingHour'], $row['PatientId'], $row['DoctorId'], $row['Note']);
-            $appointmentArray[] = $appointment->asArray();
+            $appointmentAsArray = $appointment->asArray();
+            $appointmentAsArray['name'] = $row['Name'];
+            $appointmentAsArray['surname'] = $row['Surname'];
+            if ($authorizedUser['role'] === 'Patient'){
+                $appointmentAsArray['patientsAppointment'] = $row['PatientId'] === $patientId;
+            }
+            $appointmentArray[] = $appointmentAsArray;
         }
 
         $response = new Response(true, 200);
@@ -237,6 +245,9 @@ elseif (empty($_GET)) {
                 exit();
             }
 
+            // echo json_encode((array)$jsonData);
+            // exit();
+
             if ($authorizedUser['role'] === 'Patient') {
                 $jsonData = (array)$jsonData;
                 $jsonData['patientId'] = $patientId;
@@ -264,7 +275,7 @@ elseif (empty($_GET)) {
                                             {$createAppointment->getStartingHour()},
                                             {$createAppointment->getPatientId()},
                                             {$createAppointment->getDoctorId()},
-                                            '{$createAppointment->getNote()}');");
+                                           '{$createAppointment->getNote()}');");
             $query->execute();
 
             $rowCount = $query->rowCount();

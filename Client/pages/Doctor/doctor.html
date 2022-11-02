@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../../resources/header/header.css">
     <link rel="stylesheet" href="../../pages/Doctor/doctor.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-   
+
 
 </head>
 
@@ -44,6 +44,72 @@
                     <option value="patient-content">Patients</option>
                     <option value="messages-content">Messages</option>
                 </select>
+
+                <div class="appointment-container">
+
+                    <form id="createAppointment" style="background-color: #24262b">
+                      <h1 >Create an appointment</h1>
+                      
+                      <label for="patientsSelect">Patients:</label><br />
+                      <select name="patientId" id="patientsSelect" required>
+                      </select><br/>
+
+                      <label for="serviceName">Service Name:</label><br />
+                      <select name="serviceName" id="serviceName" required>
+                        <option value="Traumatic pathology">Traumatic pathology</option>
+                        <option value="Static pathology">Static pathology</option>
+                        <option value="Osteotomy of the femur and tibia">
+                          Osteotomy of the femur and tibia
+                        </option>
+                        <option value="Complex ligamentous injuries">
+                          Complex ligamentous injuries
+                        </option>
+                        <option
+                          value="Treatment of shoulder instability and rotator cuff pathology"
+                        >
+                          Treatment of shoulder instability and rotator cuff pathology.
+                        </option>
+                        <option value="Tendinopathy in athletes and muscle injuries">
+                          Tendinopathy in athletes and muscle injuries
+                        </option>
+                        <option value="Primary knee prostheses">
+                          Primary knee prostheses
+                        </option>
+                        <option value="Primary hip prostheses">
+                          Primary hip prostheses
+                        </option>
+                      </select>
+            
+                      <label for="date">Date:</label><br />
+                      <input
+                        onchange="handleDateChange(this)"
+                        id="date"
+                        name="date"
+                        type="date"
+                        required
+                        style="width: 400px; height: 40px"
+                      /><br />
+            
+                      <label for="startingHour">Starting Hour:</label><br />
+                      <select name="startingHour" id="startingHour" required></select><br/>
+            
+                      <label for="note">Note:</label><br />
+                      <textarea
+                        id="note"
+                        name="note"
+                        style="width: 400px; height: 150px"
+                      ></textarea
+                      ><br />
+            
+                      <button
+                        type="submit"
+                        class="submit-btn"
+                        
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
             </div>
 
             <div id="container-content">
@@ -65,9 +131,9 @@
                             <tr>
                                 <th>Data</th>
                                 <th>Service Name</th>
-                                <th>Starting Hour-AM</th>
+                                <th>Starting Hour</th>
                                 <th>Completion Status</th>
-                                <th>Patient ID</th>
+                                <th>Patient</th>
                             </tr>
 
                             <!-- dynamic  table for Appointments$authorizedUser['role'] !== "Admin" -->
@@ -75,32 +141,22 @@
                     </table>
                 </div>
                 <div id="messages-content">
-                    <div class="container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/640px-Facebook_icon_2013.svg.png"
-                            alt="Avatar" style="width:100%;">
-                        <p>Hello. How are you today?</p>
-                        <span class="time-right">11:00</span>
-                    </div>
+                    <div class="message-container">
 
-                    <div class="container darker">
-                        <img src="https://cdn-icons-png.flaticon.com/512/87/87390.png" alt="Avatar" class="right"
-                            style="width:100%;">
-                        <p>Hey! I'm so bad, my friend Dzenan is dead sick! Can you help me?</p>
-                        <span class="time-left">11:01</span>
-                    </div>
+                        <div id="messagedPersons"></div>
 
-                    <div class="container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/640px-Facebook_icon_2013.svg.png"
-                            alt="Avatar" style="width:100%;">
-                        <p>Sweet! Of course, just don't save him! </p>
-                        <span class="time-right">11:02</span>
-                    </div>
+                        <div id="chatSection">
 
-                    <div class="container darker">
-                        <img src="https://cdn-icons-png.flaticon.com/512/87/87390.png" alt="Avatar" class="right"
-                            style="width:100%;">
-                        <p>Thank you Doc!</p>
-                        <span class="time-left">11:05</span>
+                            <div id="displayedMessages"></div>
+
+                            <div class="messageActions">
+                                <input id="chatInput">
+                                <button onclick="sendMessage()" id="sendMessageButton">
+                                    <i class="fa-sharp fa-solid fa-paper-plane"></i>
+                                </button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -110,57 +166,61 @@
 
     <footer class="footer">
         <div class="footer-col">
-          <h4>Clinic</h4>
-          <ul>
-            <li><a href="#">About us/a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Our team</a></li>
-            <li><a href="#"></a></li>
-          </ul>
+            <h4>Clinic</h4>
+            <ul>
+                <li><a href="#">About us/a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Our team</a></li>
+                <li><a href="#"></a></li>
+            </ul>
         </div>
         <div class="footer-col">
-          <h4>Help</h4>
-          <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">shipping</a></li>
-            <li><a href="#">returns</a></li>
-            <li><a href="#">payment options</a></li>
-          </ul>
+            <h4>Help</h4>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">shipping</a></li>
+                <li><a href="#">returns</a></li>
+                <li><a href="#">payment options</a></li>
+            </ul>
         </div>
         <div class="footer-col">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Traumatic pathology</a></li>
-            <li><a href="#">Static pathology</a></li>
-            <li><a href="#">Osteotomy of the femur and tibia</a></li>
-            <li><a href="#">Complex ligamentous injuries</a></li>
-            <li><a href="#">Treatment of shoulder instability and rotator cuff pathology</a></li>
-            <li><a href="#">Tendinopathy in athletes and muscle injuries</a></li>
-            <li><a href="#">Primary knee prostheses</a></li>
-            <li><a href="#">Primary hip prostheses</a></li>
-          </ul>
+            <h4>Our Services</h4>
+            <ul>
+                <li><a href="#">Traumatic pathology</a></li>
+                <li><a href="#">Static pathology</a></li>
+                <li><a href="#">Osteotomy of the femur and tibia</a></li>
+                <li><a href="#">Complex ligamentous injuries</a></li>
+                <li><a href="#">Treatment of shoulder instability and rotator cuff pathology</a></li>
+                <li><a href="#">Tendinopathy in athletes and muscle injuries</a></li>
+                <li><a href="#">Primary knee prostheses</a></li>
+                <li><a href="#">Primary hip prostheses</a></li>
+            </ul>
         </div>
         <div class="footer-col">
-          <h4>Contact Us</h4>
-  
-          <div class="footer-social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-          <div class="footer-contact-us">
-            <span>Telefon : +3816666666</span>
-            <br />
-            <span>Email : cplojovic@gmail.com</span>
-          </div>
+            <h4>Contact Us</h4>
+
+            <div class="footer-social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="footer-contact-us">
+                <span>Telefon : +3816666666</span>
+                <br />
+                <span>Email : cplojovic@gmail.com</span>
+            </div>
         </div>
-      </footer>
+    </footer>
     <script src="resources/gallery/index.js"></script>
 </body>
+<script src="../../constants.js"></script>
 <script src="../../utils.js"></script>
 <script src="../../auth.js"></script>
 <script src="../../pages/Doctor/doctor.js"></script>
+<script src="../../resources/removeWebHost.js"></script>
+
+
 
 </body>
 

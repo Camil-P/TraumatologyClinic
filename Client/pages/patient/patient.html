@@ -6,7 +6,7 @@
     <title>Patient</title>
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="./patient.css" />
-    <link rel="stylesheet" href="./modal.css" />
+    <!-- <link rel="stylesheet" href="./modal.css" /> -->
     <script
       src="https://kit.fontawesome.com/c4254e24a8.js"
       crossorigin="anonymous"
@@ -64,13 +64,13 @@
     <section id="appointments">
 
       <div id="upcomingAppointments">
-        <h1 style="font-size: 30px;font-weight:bold">Upcoming appointments</h1>
+        <h2 class="titleForUpAppointments">Upcoming appointments</h2>
       </div>
 
       <div class="appointment-container">
 
         <form id="createAppointment" style="background-color: #24262b">
-          <h1 style="color: white">Create an appointment</h1>
+          <h1 >Create an appointment</h1>
           <label for="serviceName">Service Name:</label><br />
           <select name="serviceName" id="serviceName" required>
             <option value="Traumatic pathology">Traumatic pathology</option>
@@ -120,8 +120,8 @@
 
           <button
             type="submit"
-            class="header-button"
-            style="width: 100px; height: 40px; margin-left: 150px"
+            class="submit-btn"
+            
           >
             Submit
           </button>
@@ -131,6 +131,26 @@
 
     <section id="doctors-container">
       <!-- dynamic creating doctor card -->
+    </section>
+
+    <section id="messages">
+      <div class="message-container">
+
+        <div id="messagedPersons"></div>
+
+        <div id="chatSection">
+
+          <div id="displayedMessages"></div>
+
+          <div class="messageActions">
+            <input id="chatInput">
+            <button onclick="sendMessage()" id="sendMessageButton">
+              <i class="fa-sharp fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
     </section>
 
     <div class="patient-container">
@@ -183,7 +203,9 @@
         </div>
       </footer>
     </div>
-    <script src="./modal.js"></script>
+    <script src="../../constants.js"></script>
     <script src="patient.js"></script>
+    <script src="../../resources/removeWebHost.js"></script>
+
   </body>
 </html>

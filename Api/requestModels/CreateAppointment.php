@@ -41,6 +41,20 @@ class CreateAppointment
         }
     }
 
+    public function asArray()
+    {
+        $appointment = array();
+        $appointment["serviceName"] = $this->getServiceName();
+        $appointment["date"] = $this->getDate();
+        $appointment["startingHour"] = $this->getStartingHour();
+        $appointment["patientId"] = $this->getPatientId();
+        $appointment["doctorId"] = $this->getDoctorID();
+        $appointment["note"] = $this->getNote();
+
+        return $appointment;
+    }
+
+
     private function appointmentAlreadyExists($writeDB, $date, $startingHour, $patientId, $doctorId)
     {
         try {

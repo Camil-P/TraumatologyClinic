@@ -5,7 +5,7 @@ logoutBtn?.addEventListener("click", (el) => {
 
   deleteCookie("accessToken");
   deleteCookie("role");
-  window.location.href = "http://127.0.0.1:5500/Client/index.html";
+  window.location.href = "/";
 });
 
 const modalProfile = document.getElementsByClassName(
@@ -49,7 +49,6 @@ function createDynamicTable(listDoctors) {
 }
 
 function createDynamicPatientTable(patientList) {
-  console.log(patientList, "Dwadwa");
 
   patientList.forEach((patient) => {
     let tr = document.createElement("tr");
@@ -63,14 +62,12 @@ function createDynamicPatientTable(patientList) {
     const submitReq = document.createElement("button");
     const cancelReq = document.createElement("button");
 
-    // const tdReqDoctorID = document.createElement("td");
 
     tr.append(tdName);
     tr.append(tdSurname);
     tr.append(tdEmail);
     tr.append(tdPhoneNumber);
     tr.append(tdPatientID);
-    // tr.append(tdReqDoctorID);
     
     tdName.innerHTML = patient.name;
     tdSurname.innerHTML = patient.surname;
@@ -87,7 +84,7 @@ function createDynamicPatientTable(patientList) {
       cancelReq.addEventListener('click',()=> {
         console.log(patient.requests.Id)
         axios.delete(
-          "http://localhost/Clinic/Api/controllers/AdminController.php?requestId="+patient.requests.Id,
+          ADMIN_CONTROLLER+"?requestId="+patient.requests.Id,
           {
             headers: {
               Authorization: token,
@@ -95,7 +92,6 @@ function createDynamicPatientTable(patientList) {
           }
         )
         .then((res) => {
-          console.log(res,"CAO")
           alert("Requests approved");
           window.location.reload();
         })
@@ -112,7 +108,7 @@ function createDynamicPatientTable(patientList) {
       submitReq.addEventListener('click',()=> {
         console.log(patient.requests.Id)
         axios.patch(
-          "http://localhost/Clinic/Api/controllers/AdminController.php?requestId="+patient.requests.Id,null,
+          ADMIN_CONTROLLER+"?requestId="+patient.requests.Id,null,
           {
             headers: {
               Authorization: token,
@@ -120,9 +116,8 @@ function createDynamicPatientTable(patientList) {
           }
         )
         .then((res) => {
-          console.log(res,"CAO")
           alert("Requests approved");
-          // window.location.reload();
+          window.location.reload();
         })
         .catch((err) => {
           console.log(err)
@@ -130,14 +125,12 @@ function createDynamicPatientTable(patientList) {
         });
       })
 
-      //dwadwa
     }
   });
 
  
  
 }
-// createDynamicTable(listDoctors);
 
 //Created user from Role
 const token = getCookie("accessToken");
@@ -154,7 +147,7 @@ form.addEventListener(
     }
     await axios
       .post(
-        "http://localhost/Clinic/Api/controllers/AdminController.php",
+        ADMIN_CONTROLLER,
         JSON.stringify(reqData),
         {
           headers: {
@@ -172,12 +165,7 @@ form.addEventListener(
       .catch(({ response }) => {
         console.log(response.data.messages[0]);
         alert(response.data.messages[0]);
-        // console.log(response.data);
-        // alert(response.data.messages[0]);
-        // const messageErr = err.response.data.messages
-
-        // alert(`Creating not successfully:  ${messageErr}`);
-        // throw err;
+        
       });
   },
   false
@@ -186,7 +174,7 @@ form.addEventListener(
 const fetchDoctors = () => {
   axios
     .get(
-      "http://localhost/Clinic/Api/controllers/AdminController.php?fetch=doctors",
+      ADMIN_CONTROLLER+"?fetch=doctors",
       {
         headers: {
           Authorization: token,
@@ -201,8 +189,7 @@ const fetchDoctors = () => {
     })
     .catch((err) => {
       console.log(err);
-      // alert(err);
-      // throw err;
+      
     });
 };
 
@@ -211,7 +198,7 @@ fetchDoctors();
 const fetchPatients = () => {
   axios
     .get(
-      "http://localhost/Clinic/Api/controllers/AdminController.php?fetch=patients",
+      ADMIN_CONTROLLER+"?fetch=patients",
       {
         headers: {
           Authorization: token,
@@ -223,9 +210,7 @@ const fetchPatients = () => {
       createDynamicPatientTable(patientList);
     })
     .catch(({ data }) => {
-      console.log(data.messages[0]);
-      // alert(err);
-      // throw err;
+      alert(data.messages[0]);
     });
 };
 

@@ -1,10 +1,10 @@
 <?php
 
-header('Access-Control-Allow-Headers: *');
-header('Access-Control-Max-Age: 86400');
-header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Credentials: true');
-header('Access-Control-Allow-Methods: *');
+// header('Access-Control-Allow-Headers: *');
+// header('Access-Control-Max-Age: 86400');
+// header("Access-Control-Allow-Origin: *");
+// header('Access-Control-Allow-Credentials: true');
+// header('Access-Control-Allow-Methods: *');
 
 
 include_once('../config/Database.php');
@@ -47,9 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         $fetch = $_GET['fetch'];
 
         if ($fetch === 'patients') {
-            $query = $writeDB->prepare("SELECT *
-                                    FROM user
-                                    WHERE Role = 'Patient'");
+            $query = $writeDB->prepare("SELECT u.*, p.Id as PatientId 
+                                        FROM user u 
+                                        INNER JOIN patient p 
+                                            ON u.Id = p.UserId;");
             $query->execute();
 
             $rowCount = $query->rowCount();
@@ -79,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
                     $row['LoginAttempts']
                 );
                 $patientAsArray = $patient->asArray();
+                $patientAsArray['patientId'] = $row['PatientId'];
                 $rowCount = $query->rowCount();
 
                 $patientsArray[] = $patientAsArray;

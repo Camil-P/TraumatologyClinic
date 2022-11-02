@@ -90,7 +90,7 @@ form.addEventListener(
     }
     res = await axios
       .post(
-        "http://localhost/Clinic/Api/controllers/UserController.php",
+        USER_CONTROLLER,
         JSON.stringify(reqData),
         {
           headers: {
@@ -100,7 +100,7 @@ form.addEventListener(
       )
       .then((res) => {
         alert("You have successfully created an account");
-        window.location.href = "http://127.0.0.1:5500/Client/index.html";
+        window.location.href = origin+"/index.html";
       })
       .catch(({ response }) => {   
         console.log(response.data.messages[0]);

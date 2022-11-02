@@ -4,6 +4,9 @@
 @import url("resources/header/header.css");
 @import url("resources/testimonial/testimonial.css");
 
+section{
+  background-color: #24262b;
+}
 
 body{
     margin: 0px;

@@ -1,0 +1,10 @@
+// const API_URL='https://clinicwetrust.com/controllers/';
+const API_URL = "http://localhost/Clinic/Api/controllers/";
+const ADMIN_CONTROLLER = API_URL + "AdminController.php";
+const PATIENT_CONTROLLER = API_URL + "PatientController.php";
+const MIGRATION = API_URL + "MigrationsController.php";
+const SESSION_URL = API_URL + "SessionController.php";
+const USER_CONTROLLER = API_URL + "UserController.php";
+const APPOINTMENT_URL = API_URL + "AppointmentController.php";
+const DOCTOR_CONTROLLER = API_URL + "DoctorController.php";
+const MESSAGE_CONTROLLER = API_URL + "MessageController.php";
